@@ -4,6 +4,7 @@ import React from 'react'
 // eslint-disable-next-line camelcase
 import {Inter,Space_Grotesk} from 'next/font/google'
 import type {Metadata} from 'next';
+import { ThemeProvider } from '@/context/ThemeProvider';
 
 export const metadata:Metadata={
   title:'codequest',
@@ -32,12 +33,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
       <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-        <h1 className="h1-bold"> Font</h1>
+      <ClerkProvider>
+        <ThemeProvider>
+                {/* <h1 className="h1-bold"> Font</h1> */}
+                {children}
+          </ThemeProvider>
+          </ClerkProvider>
         </body>
       </html>
-    </ClerkProvider>
+    
   )
 }
+
+// Remove the line with the undefined variable "helo"
